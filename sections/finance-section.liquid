@@ -1,0 +1,55 @@
+<div class="finance-section">
+  <div class="section-header">
+    <h2 class="section-title">{{ section.settings.heading }}</h2>
+    <p class="section-subtitle">{{ section.settings.subheading }}</p>
+  </div>
+  <div class="finance-cards">
+    {% for block in section.blocks %}
+    <div class="finance-card fade-in">
+      <div class="finance-icon">{{ block.settings.icon }}</div>
+      <h3 class="finance-title">{{ block.settings.title }}</h3>
+      <p class="finance-text">{{ block.settings.description }}</p>
+      {% if block.settings.link_text != blank %}
+      <a href="{{ block.settings.link }}" class="finance-link">{{ block.settings.link_text }} →</a>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.finance-section{padding:5rem 2rem;background:rgba(20,10,40,0.5)}
+.finance-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+.finance-card{background:rgba(30,20,60,0.6);border:1px solid rgba(0,212,255,0.2);border-radius:15px;padding:2rem;transition:all 0.3s ease;backdrop-filter:blur(10px)}
+.finance-card:hover{transform:translateY(-5px);border-color:rgba(0,212,255,0.5);box-shadow:0 15px 40px rgba(0,212,255,0.2)}
+.finance-icon{font-size:2.5rem;margin-bottom:1rem}
+.finance-title{font-size:1.25rem;font-weight:600;margin-bottom:1rem;color:#00d4ff}
+.finance-text{color:rgba(255,255,255,0.75);line-height:1.6;margin-bottom:1rem}
+.finance-link{color:#a855f7;text-decoration:none;font-weight:500;transition:color 0.3s ease}
+.finance-link:hover{color:#00d4ff}
+@media(max-width:768px){.finance-section{padding:3rem 1rem}.finance-cards{grid-template-columns:1fr}}
+</style>
+
+{% schema %}
+{
+  "name":"Finance Section",
+  "settings":[
+    {"type":"text","id":"heading","label":"Heading","default":"Flexible Payment Options"},
+    {"type":"text","id":"subheading","label":"Subheading","default":"Choose the payment method that works best for you"}
+  ],
+  "blocks":[
+    {
+      "type":"feature",
+      "name":"Finance Feature",
+      "settings":[
+        {"type":"text","id":"icon","label":"Icon","default":"💳"},
+        {"type":"text","id":"title","label":"Title"},
+        {"type":"textarea","id":"description","label":"Description"},
+        {"type":"text","id":"link_text","label":"Link Text"},
+        {"type":"url","id":"link","label":"Link"}
+      ]
+    }
+  ],
+  "presets":[{"name":"Finance Section"}]
+}
+{% endschema %}
