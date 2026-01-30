@@ -1,0 +1,11 @@
+<header class="site-header">
+  <div class="container">
+    <div class="header-wrapper">
+      <div class="logo"><a href="/"><span class="logo-text">Celestial Analytics</span><span class="logo-icon">✦</span></a></div>
+      <nav class="main-nav" id="main-nav"><ul class="nav-list"><li><a href="/" class="nav-link">Home</a></li><li><a href="/pages/how-it-works" class="nav-link">How It Works</a></li><li><a href="/collections/all" class="nav-link">Products</a></li><li><a href="/pages/celestial-finance" class="nav-link">Celestial Finance</a></li><li><a href="/pages/about" class="nav-link">About</a></li><li><a href="/pages/faq" class="nav-link">FAQ</a></li><li><a href="/pages/contact" class="nav-link">Contact</a></li></ul></nav>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+    </div>
+  </div>
+</header>
+<style>.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(10,10,30,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.1);padding:1.2rem 0}.header-wrapper{display:flex;align-items:center;justify-content:space-between}.logo-link{display:flex;align-items:center;gap:0.5rem;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:600;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.logo-icon{font-size:1.6rem}.nav-list{display:flex;gap:2rem;list-style:none;margin:0;padding:0}.nav-link{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.95rem}.nav-link:hover{color:#8b94ff}.mobile-menu-toggle{display:none}@media(max-width:968px){.main-nav{position:fixed;top:70px;left:0;width:100%;background:rgba(10,10,30,0.98);padding:2rem 0;transform:translateY(-120%);transition:transform 0.4s}.main-nav.active{transform:translateY(0)}.nav-list{flex-direction:column;align-items:center}.mobile-menu-toggle{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}.hamburger-line{width:25px;height:2px;background:#fff}}</style>
+{% schema %}{"name":"Header","settings":[]}{% endschema %}
