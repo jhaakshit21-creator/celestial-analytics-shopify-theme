@@ -1,0 +1,59 @@
+<div class="products-section">
+  <div class="section-header">
+    <h2 class="section-title">{{ section.settings.heading }}</h2>
+    <p class="section-subtitle">{{ section.settings.subheading }}</p>
+  </div>
+  <div class="products-grid">
+    {% for block in section.blocks %}
+    <div class="product-card fade-in">
+      <div class="product-icon">{{ block.settings.icon }}</div>
+      <h3 class="product-name">{{ block.settings.name }}</h3>
+      <p class="product-desc">{{ block.settings.description }}</p>
+      <div class="product-price">{{ block.settings.price }}</div>
+      <a href="{{ block.settings.link }}" class="product-button">{{ block.settings.button_text }}</a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.products-section{padding:5rem 2rem;background:rgba(10,10,30,0.5)}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:1rem;background:linear-gradient(135deg,#00d4ff,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-subtitle{font-size:1.125rem;color:rgba(255,255,255,0.7)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+.product-card{background:rgba(20,20,50,0.6);border:1px solid rgba(168,85,247,0.2);border-radius:20px;padding:2rem;text-align:center;transition:all 0.3s ease;backdrop-filter:blur(10px)}
+.product-card:hover{transform:translateY(-10px);border-color:rgba(168,85,247,0.6);box-shadow:0 20px 50px rgba(168,85,247,0.3)}
+.product-icon{font-size:3rem;margin-bottom:1.5rem}
+.product-name{font-size:1.5rem;font-weight:600;margin-bottom:1rem;color:#fff}
+.product-desc{color:rgba(255,255,255,0.7);margin-bottom:1.5rem;line-height:1.6}
+.product-price{font-size:2rem;font-weight:700;color:#00d4ff;margin-bottom:1.5rem}
+.product-button{display:inline-block;padding:0.875rem 2rem;background:linear-gradient(135deg,#00d4ff,#a855f7);color:#fff;text-decoration:none;border-radius:50px;font-weight:600;transition:all 0.3s ease}
+.product-button:hover{transform:scale(1.05);box-shadow:0 10px 30px rgba(168,85,247,0.4)}
+@media(max-width:768px){.products-section{padding:3rem 1rem}.products-grid{grid-template-columns:1fr;gap:1.5rem}}
+</style>
+
+{% schema %}
+{
+  "name":"Products Section",
+  "settings":[
+    {"type":"text","id":"heading","label":"Heading","default":"Choose Your Cosmic Journey"},
+    {"type":"text","id":"subheading","label":"Subheading","default":"Select the perfect astrology service for your needs"}
+  ],
+  "blocks":[
+    {
+      "type":"product",
+      "name":"Product",
+      "settings":[
+        {"type":"text","id":"icon","label":"Icon","default":"⭐"},
+        {"type":"text","id":"name","label":"Product Name"},
+        {"type":"textarea","id":"description","label":"Description"},
+        {"type":"text","id":"price","label":"Price"},
+        {"type":"text","id":"button_text","label":"Button Text","default":"Get Started"},
+        {"type":"url","id":"link","label":"Link"}
+      ]
+    }
+  ],
+  "presets":[{"name":"Products Section"}]
+}
+{% endschema %}
