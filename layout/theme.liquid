@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}{{ shop.name }}</title>
+  
+  {{ content_for_header }}
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  
+  <script src="{{ 'cosmic-background.js' | asset_url }}" defer></script>
+  <script src="{{ 'animations.js' | asset_url }}" defer></script>
+</head>
+<body class="cosmic-body">
+  
+  <!-- Cosmic Background Canvas -->
+  <canvas id="cosmic-canvas" class="cosmic-canvas"></canvas>
+  
+  <!-- Header Section -->
+  {% section 'header' %}
+  
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+    {{ content_for_layout }}
+  </main>
+  
+  <!-- Footer Section -->
+  {% section 'footer' %}
+  
+</body>
+</html>
