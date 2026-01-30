@@ -1,1 +1,103 @@
-{"sections":{"header":{"type":"header"},"main":{"type":"main-page"},"footer":{"type":"footer"}},"order":["header","main","footer"]}
+{
+  "sections": {
+    "header": {
+      "type": "header"
+    },
+    "hero": {
+      "type": "hero-section",
+      "settings": {
+        "title": "Unlock Your Cosmic Potential",
+        "subtitle": "Discover personalized astrology insights powered by ancient wisdom and modern analytics",
+        "cta_text": "Explore Services",
+        "cta_link": "/pages/services"
+      }
+    },
+    "products": {
+      "type": "products-section",
+      "settings": {
+        "heading": "Choose Your Cosmic Journey",
+        "subheading": "Select the perfect astrology service for your needs"
+      },
+      "blocks": {
+        "product_1": {
+          "type": "product",
+          "settings": {
+            "icon": "⭐",
+            "name": "Birth Chart Analysis",
+            "description": "Detailed analysis of your natal chart revealing personality traits and life patterns",
+            "price": "$49",
+            "button_text": "Get Started",
+            "link": "/products/birth-chart"
+          }
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {
+            "icon": "🌙",
+            "name": "Monthly Forecast",
+            "description": "Personalized monthly predictions and cosmic guidance for the month ahead",
+            "price": "$29",
+            "button_text": "Subscribe",
+            "link": "/products/monthly-forecast"
+          }
+        },
+        "product_3": {
+          "type": "product",
+          "settings": {
+            "icon": "🔮",
+            "name": "Compatibility Reading",
+            "description": "Synastry analysis for relationships, partnerships, and compatibility insights",
+            "price": "$79",
+            "button_text": "Learn More",
+            "link": "/products/compatibility"
+          }
+        }
+      },
+      "block_order": ["product_1", "product_2", "product_3"]
+    },
+    "finance": {
+      "type": "finance-section",
+      "settings": {
+        "heading": "Flexible Payment Options",
+        "subheading": "Choose the payment method that works best for you"
+      },
+      "blocks": {
+        "finance_1": {
+          "type": "feature",
+          "settings": {
+            "icon": "💳",
+            "title": "Secure Checkout",
+            "description": "All payments are encrypted and processed securely through Shopify",
+            "link_text": "",
+            "link": ""
+          }
+        },
+        "finance_2": {
+          "type": "feature",
+          "settings": {
+            "icon": "💰",
+            "title": "Multiple Payment Methods",
+            "description": "Accept credit cards, PayPal, Apple Pay, and more payment options",
+            "link_text": "",
+            "link": ""
+          }
+        },
+        "finance_3": {
+          "type": "feature",
+          "settings": {
+            "icon": "♻️",
+            "title": "Money-Back Guarantee",
+            "description": "Not satisfied? Get a full refund within 30 days of purchase",
+            "link_text": "Learn More",
+            "link": "/pages/refund-policy"
+          }
+        }
+      },
+      "block_order": ["finance_1", "finance_2", "finance_3"]
+    },
+    "footer": {
+      "type": "footer"
+    }
+  },
+  "order": ["header", "hero", "products", "finance", "footer"]
+}
