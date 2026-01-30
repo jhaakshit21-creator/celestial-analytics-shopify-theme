@@ -1,0 +1,168 @@
+{% section 'header' %}
+
+<div class="finance-page">
+  <div class="floating-orb orb-1"></div>
+  <div class="floating-orb orb-2"></div>
+  
+  <div class="disclaimer-banner pulse-glow">
+    <div class="disclaimer-icon">⚠️</div>
+    <div class="disclaimer-text">
+      <strong>EDUCATIONAL CONTENT ONLY</strong> - This page contains educational material about lunar phase analysis. This is NOT financial advice. Always consult licensed financial professionals before making investment decisions.
+    </div>
+  </div>
+
+  <div class="finance-hero fade-in-up">
+    <h1 class="finance-title glow-text">Celestial Finance Analytics</h1>
+    <p class="finance-subtitle">Educational lunar phase + RSI indicator system for binary options analysis</p>
+  </div>
+
+  <div class="finance-content">
+    <section class="strategy-section fade-slide-right">
+      <h2 class="section-heading">🌙 Lunar Phase Binary Strategy (Educational)</h2>
+      <div class="strategy-card">
+        <p class="strategy-intro">This educational strategy combines lunar phases with RSI (Relative Strength Index) for analytical purposes. <strong>For learning only.</strong></p>
+        
+        <div class="strategy-steps">
+          <div class="step-card slide-in" style="--delay:0.1s">
+            <div class="step-number">1</div>
+            <h4>Identify Lunar Phase</h4>
+            <p>• New Moon: Potential reversal zones<br>• Full Moon: Peak sentiment periods<br>• Waxing/Waning: Trend continuation signals</p>
+          </div>
+          
+          <div class="step-card slide-in" style="--delay:0.2s">
+            <div class="step-number">2</div>
+            <h4>RSI Confirmation</h4>
+            <p>• RSI > 70: Overbought (potential reversal)<br>• RSI < 30: Oversold (potential reversal)<br>• RSI 40-60: Neutral zone</p>
+          </div>
+          
+          <div class="step-card slide-in" style="--delay:0.3s">
+            <div class="step-number">3</div>
+            <h4>Entry Signals (Theory)</h4>
+            <p>• New Moon + RSI < 30 = Potential BUY signal<br>• Full Moon + RSI > 70 = Potential SELL signal<br>• Always confirm with price action</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="indicator-section fade-slide-left">
+      <h2 class="section-heading">📊 Lunar RSI Indicator Code (Display Only)</h2>
+      <div class="code-card">
+        <div class="code-header">
+          <span class="code-lang">Pine Script v5</span>
+          <span class="code-note">Educational Reference - Not Investment Advice</span>
+        </div>
+        <pre class="code-block"><code>//@version=5
+indicator("Lunar Phase + RSI", overlay=false)
+
+// RSI Calculation
+rsiLength = input.int(14, "RSI Period")
+rsiSource = close
+rsiValue = ta.rsi(rsiSource, rsiLength)
+
+// Lunar Phase Calculation (Simplified)
+lunarCycle = 29.53 // days
+timestamp = time / 86400000 // Convert to days
+lunarPhase = (timestamp % lunarCycle) / lunarCycle
+
+// Phase Categories
+isNewMoon = lunarPhase < 0.1 or lunarPhase > 0.9
+isFullMoon = lunarPhase > 0.4 and lunarPhase < 0.6
+
+// Signals (Educational)
+buySignal = isNewMoon and rsiValue < 30
+sellSignal = isFullMoon and rsiValue > 70
+
+// Plot
+plot(rsiValue, "RSI", color.blue, 2)
+hline(70, "Overbought", color.red)
+hline(30, "Oversold", color.green)
+bgcolor(buySignal ? color.new(color.green, 90) : na)
+bgcolor(sellSignal ? color.new(color.red, 90) : na)</code></pre>
+      </div>
+    </section>
+
+    <section class="resources-section fade-in-up">
+      <h2 class="section-heading">📄 Educational Resources</h2>
+      <div class="resources-grid">
+        <div class="resource-card hover-lift">
+          <div class="resource-icon">📚</div>
+          <h3>Strategy PDF Guide</h3>
+          <p>Complete lunar phase analysis methodology (educational)</p>
+          <button class="resource-btn">Download PDF</button>
+        </div>
+        
+        <div class="resource-card hover-lift">
+          <div class="resource-icon">💻</div>
+          <h3>Demo Website</h3>
+          <p>Interactive lunar calendar and phase tracker</p>
+          <button class="resource-btn">Visit Demo</button>
+        </div>
+        
+        <div class="resource-card hover-lift">
+          <div class="resource-icon">📊</div>
+          <h3>Backtesting Data</h3>
+          <p>Historical lunar phase correlation analysis</p>
+          <button class="resource-btn">View Data</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="final-disclaimer fade-in-up">
+      <div class="disclaimer-box">
+        <h3>⚠️ Important Disclaimer</h3>
+        <p>All content on this page is for <strong>educational and informational purposes only</strong>. This is not financial, investment, or trading advice. Binary options trading carries substantial risk of loss. Past performance does not guarantee future results. The lunar phase correlation is a theoretical concept and should not be used as the sole basis for trading decisions. Always:</p>
+        <ul>
+          <li>• Consult with licensed financial advisors</li>
+          <li>• Never invest more than you can afford to lose</li>
+          <li>• Understand that markets are influenced by countless factors</li>
+          <li>• Perform your own research and due diligence</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% section 'footer' %}
+
+<style>
+.finance-page{position:relative;min-height:100vh;padding:6rem 2rem 4rem;overflow:hidden}
+.disclaimer-banner{position:sticky;top:60px;z-index:100;background:linear-gradient(135deg,rgba(255,193,7,0.95),rgba(255,152,0,0.95));padding:1rem 2rem;display:flex;align-items:center;gap:1rem;border-radius:12px;margin-bottom:2rem;box-shadow:0 10px 40px rgba(255,193,7,0.4)}
+.disclaimer-icon{font-size:2rem;animation:pulse 2s infinite}
+.disclaimer-text{color:#000;font-weight:500;line-height:1.6}
+.disclaimer-text strong{font-weight:700}
+.finance-hero{text-align:center;margin:3rem 0}
+.finance-title{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:1rem}
+.finance-subtitle{font-size:1.25rem;color:rgba(255,255,255,0.7)}
+.finance-content{max-width:1200px;margin:0 auto}
+.section-heading{font-size:2rem;margin:4rem 0 2rem;color:#00d4ff;text-align:center}
+.strategy-card{background:rgba(20,20,50,0.8);border:2px solid rgba(0,212,255,0.3);border-radius:24px;padding:3rem;backdrop-filter:blur(10px)}
+.strategy-intro{font-size:1.125rem;margin-bottom:2rem;color:rgba(255,255,255,0.85)}
+.strategy-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.step-card{background:rgba(30,20,60,0.6);padding:2rem;border-radius:16px;border:1px solid rgba(168,85,247,0.2);transition:all 0.3s}
+.step-card:hover{transform:translateY(-5px);border-color:rgba(168,85,247,0.6);box-shadow:0 15px 40px rgba(168,85,247,0.3)}
+.step-number{width:50px;height:50px;background:linear-gradient(135deg,#00d4ff,#a855f7);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;margin-bottom:1rem}
+.step-card h4{font-size:1.25rem;margin-bottom:1rem;color:#fff}
+.step-card p{color:rgba(255,255,255,0.75);line-height:1.8}
+.code-card{background:rgba(10,10,30,0.9);border:2px solid rgba(168,85,247,0.3);border-radius:16px;overflow:hidden;margin:2rem 0}
+.code-header{background:rgba(168,85,247,0.2);padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(168,85,247,0.3)}
+.code-lang{color:#a855f7;font-weight:600}
+.code-note{color:#ffc107;font-size:0.875rem}
+.code-block{margin:0;padding:2rem;overflow-x:auto;font-family:'Courier New',monospace;font-size:0.9rem;line-height:1.8}
+.code-block code{color:#00d4ff}
+.resources-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin:2rem 0}
+.resource-card{background:rgba(20,20,50,0.8);border:2px solid rgba(0,212,255,0.2);border-radius:20px;padding:2rem;text-align:center;transition:all 0.4s}
+.resource-card:hover{transform:translateY(-10px);border-color:rgba(0,212,255,0.8);box-shadow:0 20px 50px rgba(0,212,255,0.4)}
+.resource-icon{font-size:3.5rem;margin-bottom:1rem}
+.resource-card h3{font-size:1.5rem;margin-bottom:1rem;color:#fff}
+.resource-card p{color:rgba(255,255,255,0.7);margin-bottom:1.5rem}
+.resource-btn{padding:0.875rem 2rem;background:linear-gradient(135deg,#00d4ff,#a855f7);border:none;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:all 0.3s}
+.resource-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,212,255,0.5)}
+.final-disclaimer{margin:4rem 0}
+.disclaimer-box{background:rgba(255,193,7,0.1);border:2px solid rgba(255,193,7,0.4);border-radius:16px;padding:2rem}
+.disclaimer-box h3{color:#ffc107;margin-bottom:1rem}
+.disclaimer-box p{color:rgba(255,255,255,0.85);line-height:1.8;margin-bottom:1rem}
+.disclaimer-box ul{list-style:none;padding-left:0}
+.disclaimer-box li{color:rgba(255,255,255,0.8);margin:0.5rem 0}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+@media(max-width:768px){.finance-page{padding:5rem 1rem 3rem}.strategy-steps{grid-template-columns:1fr}}
+</style>
