@@ -1,11 +1,66 @@
 <header class="site-header">
   <div class="container">
     <div class="header-wrapper">
-      <div class="logo"><a href="/"><span class="logo-text">Celestial Analytics</span><span class="logo-icon">✦</span></a></div>
-      <nav class="main-nav" id="main-nav"><ul class="nav-list"><li><a href="/" class="nav-link">Home</a></li><li><a href="/pages/how-it-works" class="nav-link">How It Works</a></li><li><a href="/collections/all" class="nav-link">Products</a></li><li><a href="/pages/celestial-finance" class="nav-link">Celestial Finance</a></li><li><a href="/pages/about" class="nav-link">About</a></li><li><a href="/pages/faq" class="nav-link">FAQ</a></li><li><a href="/pages/contact" class="nav-link">Contact</a></li></ul></nav>
+      <div class="logo"><a href="{{ routes.root_url }}"><span class="logo-text">Celestial Analytics</span><span class="logo-icon">✨</span></a></div>
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="{{ routes.root_url }}" class="nav-link">Home</a></li>
+          <li><a href="{{ pages['products'].url }}" class="nav-link">Products</a></li>
+          <li><a href="{{ pages['celestial-finance'].url }}" class="nav-link">Celestial Finance</a></li>
+          <li><a href="{{ pages['about'].url }}" class="nav-link">About</a></li>
+          <li><a href="{{ pages['contact'].url }}" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
       <button class="mobile-menu-toggle" id="mobile-menu-toggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
     </div>
   </div>
 </header>
-<style>.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(10,10,30,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.1);padding:1.2rem 0}.header-wrapper{display:flex;align-items:center;justify-content:space-between}.logo-link{display:flex;align-items:center;gap:0.5rem;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:600;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.logo-icon{font-size:1.6rem}.nav-list{display:flex;gap:2rem;list-style:none;margin:0;padding:0}.nav-link{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.95rem}.nav-link:hover{color:#8b94ff}.mobile-menu-toggle{display:none}@media(max-width:968px){.main-nav{position:fixed;top:70px;left:0;width:100%;background:rgba(10,10,30,0.98);padding:2rem 0;transform:translateY(-120%);transition:transform 0.4s}.main-nav.active{transform:translateY(0)}.nav-list{flex-direction:column;align-items:center}.mobile-menu-toggle{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}.hamburger-line{width:25px;height:2px;background:#fff}}</style>
-{% schema %}{"name":"Header","settings":[]}{% endschema %}
+
+<style>
+.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(10,10,30,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(168,85,247,0.2);transition:all 0.3s ease}
+.site-header.scrolled{background:rgba(10,10,30,0.98);box-shadow:0 10px 40px rgba(0,0,0,0.5)}
+.container{max-width:1400px;margin:0 auto;padding:0 2rem}
+.header-wrapper{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo a{text-decoration:none;display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:transform 0.3s}
+.logo a:hover{transform:scale(1.05)}
+.logo-icon{font-size:1.75rem;animation:rotate-glow 6s linear infinite}
+@keyframes rotate-glow{0%{transform:rotate(0deg)filter:drop-shadow(0 0 5px currentColor)}50%{transform:rotate(180deg)filter:drop-shadow(0 0 15px currentColor)}100%{transform:rotate(360deg)filter:drop-shadow(0 0 5px currentColor)}}
+.nav-list{display:flex;list-style:none;gap:2rem;margin:0;padding:0}
+.nav-link{color:rgba(255,255,255,0.85);text-decoration:none;font-weight:500;padding:0.5rem 1rem;border-radius:8px;transition:all 0.3s;position:relative}
+.nav-link::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%)scaleX(0);width:80%;height:2px;background:linear-gradient(135deg,#00d4ff,#a855f7);transition:transform 0.3s}
+.nav-link:hover{color:#00d4ff;background:rgba(0,212,255,0.1)}
+.nav-link:hover::before{transform:translateX(-50%)scaleX(1)}
+.mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;flex-direction:column;gap:6px}
+.hamburger-line{width:30px;height:3px;background:linear-gradient(135deg,#00d4ff,#a855f7);border-radius:3px;transition:all 0.3s}
+@media(max-width:768px){
+.main-nav{position:fixed;top:70px;left:0;width:100%;background:rgba(10,10,30,0.98);backdrop-filter:blur(20px);transform:translateY(-100%);opacity:0;visibility:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);border-bottom:1px solid rgba(168,85,247,0.2)}
+.main-nav.active{transform:translateY(0);opacity:1;visibility:visible}
+.nav-list{flex-direction:column;padding:2rem;gap:0}
+.nav-link{display:block;padding:1rem;border-radius:0;border-bottom:1px solid rgba(255,255,255,0.1)}
+.mobile-menu-toggle{display:flex}
+.mobile-menu-toggle.active .hamburger-line:nth-child(1){transform:rotate(45deg)translateY(9px)}
+.mobile-menu-toggle.active .hamburger-line:nth-child(2){opacity:0}
+.mobile-menu-toggle.active .hamburger-line:nth-child(3){transform:rotate(-45deg)translateY(-9px)}
+}
+</style>
+
+<script>
+window.addEventListener('scroll',()=>{
+const header=document.querySelector('.site-header');
+if(window.scrollY>50){header.classList.add('scrolled')}else{header.classList.remove('scrolled')}
+});
+
+const toggle=document.getElementById('mobile-menu-toggle');
+const nav=document.getElementById('main-nav');
+toggle.addEventListener('click',()=>{
+toggle.classList.toggle('active');
+nav.classList.toggle('active');
+});
+</script>
+
+{% schema %}
+{
+  "name":"Header",
+  "settings":[]
+}
+{% endschema %}
